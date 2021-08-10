@@ -1,0 +1,39 @@
+INFO  2021-08-04 22:42:09,546 - Starting LoggerTest using Java 1.8.0_161 on Wablers-Y7000P with PID 62060 (started by Lenovo in D:\JavaProjects\WeChatSell)
+INFO  2021-08-04 22:42:09,549 - No active profile set, falling back to default profiles: default
+INFO  2021-08-04 22:42:10,361 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+INFO  2021-08-04 22:42:10,384 - Finished Spring Data repository scanning in 10 ms. Found 0 JPA repository interfaces.
+INFO  2021-08-04 22:42:11,083 - HikariPool-1 - Starting...
+WARN  2021-08-04 22:42:11,094 - Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+INFO  2021-08-04 22:42:11,297 - HikariPool-1 - Start completed.
+INFO  2021-08-04 22:42:11,362 - HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO  2021-08-04 22:42:11,479 - HHH000412: Hibernate ORM core version 5.4.32.Final
+INFO  2021-08-04 22:42:11,662 - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+INFO  2021-08-04 22:42:12,511 - HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+INFO  2021-08-04 22:42:12,781 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  2021-08-04 22:42:12,797 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+WARN  2021-08-04 22:42:13,138 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO  2021-08-04 22:42:14,149 - Started LoggerTest in 5.215 seconds (JVM running for 6.509)
+INFO  2021-08-04 22:42:14,284 - name: xyz, password: 123456
+INFO  2021-08-04 22:42:14,285 - name: xyz, password: 123456
+INFO  2021-08-04 22:42:14,305 - Closing JPA EntityManagerFactory for persistence unit 'default'
+INFO  2021-08-04 22:42:14,308 - HikariPool-1 - Shutdown initiated...
+INFO  2021-08-04 22:42:14,317 - HikariPool-1 - Shutdown completed.
+INFO  2021-08-04 22:42:48,379 - Starting LoggerTest using Java 1.8.0_161 on Wablers-Y7000P with PID 44664 (started by Lenovo in D:\JavaProjects\WeChatSell)
+INFO  2021-08-04 22:42:48,384 - No active profile set, falling back to default profiles: default
+INFO  2021-08-04 22:42:49,219 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+INFO  2021-08-04 22:42:49,239 - Finished Spring Data repository scanning in 8 ms. Found 0 JPA repository interfaces.
+INFO  2021-08-04 22:42:49,939 - HikariPool-1 - Starting...
+INFO  2021-08-04 22:42:50,126 - HikariPool-1 - Start completed.
+INFO  2021-08-04 22:42:50,202 - HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO  2021-08-04 22:42:50,311 - HHH000412: Hibernate ORM core version 5.4.32.Final
+INFO  2021-08-04 22:42:50,542 - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+INFO  2021-08-04 22:42:51,379 - HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+INFO  2021-08-04 22:42:51,641 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  2021-08-04 22:42:51,655 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+WARN  2021-08-04 22:42:52,026 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO  2021-08-04 22:42:52,854 - Started LoggerTest in 5.096 seconds (JVM running for 6.443)
+INFO  2021-08-04 22:42:52,967 - name: xyz, password: 123456
+INFO  2021-08-04 22:42:52,967 - name: xyz, password: 123456
+INFO  2021-08-04 22:42:52,983 - Closing JPA EntityManagerFactory for persistence unit 'default'
+INFO  2021-08-04 22:42:52,985 - HikariPool-1 - Shutdown initiated...
+INFO  2021-08-04 22:42:52,996 - HikariPool-1 - Shutdown completed.
