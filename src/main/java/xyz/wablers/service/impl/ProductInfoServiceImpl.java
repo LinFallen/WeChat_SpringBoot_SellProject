@@ -8,11 +8,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import xyz.wablers.dataobject.ProductInfo;
+import xyz.wablers.dto.CartDTO;
 import xyz.wablers.enums.ProductStatusEnum;
+import xyz.wablers.enums.ResultEnum;
+import xyz.wablers.exception.SellException;
 import xyz.wablers.repository.ProductInfoRepository;
 import xyz.wablers.service.ProductInfoService;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,5 +58,46 @@ public class ProductInfoServiceImpl implements ProductInfoService {
     @Override
     public ProductInfo save(ProductInfo productInfo) {
         return productInfoRepository.save(productInfo);
+    }
+
+    @Override
+    public void increaseStock(List<CartDTO> cartDTOList) {
+        List<ProductInfo> changeProducts = new ArrayList<>();
+        for (CartDTO cartDTO : cartDTOList) {
+            ProductInfo productInfo = findOne(cartDTO.getProductId());
+            if (productInfo == null) {
+                // 如果商品不存在
+                throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
+            }
+
+            // 增库存
+            int stock = productInfo.getProductStock() + cartDTO.getProductQuantity();
+            productInfo.setProductStock(stock);
+            changeProducts.add(productInfo);
+        }
+        productInfoRepository.saveAll(changeProducts);
+    }
+
+    @Override
+    @Transactional
+    public void decreaseStock(List<CartDTO> cartDTOList) {
+        List<ProductInfo> changeProducts = new ArrayList<>();
+        for (CartDTO cartDTO : cartDTOList) {
+            ProductInfo productInfo = findOne(cartDTO.getProductId());
+            if (productInfo == null) {
+                // 如果商品不存在
+                throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
+            }
+
+            // 减库存
+            int stock = productInfo.getProductStock() - cartDTO.getProductQuantity();
+            if (stock < 0) {
+                // 库存不足
+                throw new SellException(ResultEnum.PRODUCT_STOCK_ERROR);
+            }
+            productInfo.setProductStock(stock);
+            changeProducts.add(productInfo);
+        }
+        productInfoRepository.saveAll(changeProducts);
     }
 }
