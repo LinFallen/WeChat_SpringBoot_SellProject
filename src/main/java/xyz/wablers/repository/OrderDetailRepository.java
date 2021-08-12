@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * @author Wablers
  * @version 1.0
- * @description: TODO
+ * @description: OrderDetailRepository用户接口
  * @date 2021/8/10 18:53
  */
 public interface OrderDetailRepository extends JpaRepository<OrderDetail, String> {

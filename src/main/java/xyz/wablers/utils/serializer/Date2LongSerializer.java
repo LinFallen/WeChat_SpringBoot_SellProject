@@ -10,7 +10,7 @@ import java.util.Date;
 /**
  * @author Wablers
  * @version 1.0
- * @description: TODO
+ * @description: 时间转换
  * @date 2021/8/11 14:00
  */
 public class Date2LongSerializer extends JsonSerializer<Date> {

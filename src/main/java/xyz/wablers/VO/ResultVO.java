@@ -13,7 +13,6 @@ import java.io.Serializable;
  */
 
 @Data
-@AllArgsConstructor
 public class ResultVO<T> implements Serializable {
     /**
      * 这里使用GenerateSerialVersionUID插件自动生成序列化ID（快捷键为alt+z,可自己在setting中搜索GenerateSerial更改）
@@ -33,8 +32,4 @@ public class ResultVO<T> implements Serializable {
     private String msg;
     // 数据
     private T data;
-
-    public ResultVO() {
-
-    }
 }

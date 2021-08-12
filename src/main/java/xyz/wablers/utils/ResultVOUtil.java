@@ -10,8 +10,12 @@ import xyz.wablers.VO.ResultVO;
  */
 public class ResultVOUtil {
 
-    public static ResultVO success(Object data) {
-        return new ResultVO(0, "请求成功", data);
+    public static ResultVO success(Object object) {
+        ResultVO resultVO = new ResultVO();
+        resultVO.setData(object);
+        resultVO.setCode(0);
+        resultVO.setMsg("成功");
+        return resultVO;
     }
 
     public static ResultVO success() {
@@ -19,6 +23,9 @@ public class ResultVOUtil {
     }
 
     public static ResultVO error(Integer code, String msg) {
-        return new ResultVO(code, msg, null);
+        ResultVO resultVO = new ResultVO();
+        resultVO.setCode(code);
+        resultVO.setMsg(msg);
+        return resultVO;
     }
 }

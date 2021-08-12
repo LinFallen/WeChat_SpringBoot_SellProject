@@ -46,6 +46,6 @@ public class OrderDTO {
     @JsonSerialize(using = Date2LongSerializer.class)
     private Date updateTime;
     // 该订单概要对应的订单详情，一对多关系，@JsonInclude当该字段值为null时，生成json不包含该字段
-    @JsonInclude(JsonInclude.Include.NON_EMPTY)
+    //@JsonInclude(JsonInclude.Include.NON_EMPTY)
     List<OrderDetail> orderDetailList;
 }
