@@ -86,6 +86,19 @@
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 		<!-- hibernate validation  end  -->
+		<!--引入github微信公众号开发轮子-->
+		<dependency>
+			<groupId>com.github.binarywang</groupId>
+			<artifactId>weixin-java-mp</artifactId>
+			<version>2.7.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/cn.springboot/best-pay-sdk -->
+		<dependency>
+			<groupId>cn.springboot</groupId>
+			<artifactId>best-pay-sdk</artifactId>
+			<version>1.1.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

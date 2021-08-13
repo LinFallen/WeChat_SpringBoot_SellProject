@@ -12,3 +12,12 @@ server:
   port: 8080
   servlet:
     context-path: /sell
+
+wechat:
+  mpAppId: wx2b7e8a3787c01e65
+  mpAppSecret: 7fbab8be85b762cb4a40bf04cbe5e803
+  mchId:
+  key-path:
+  mch-key:
+  notify-url: http://sellwechat.nat100.top/sell/pay/notify
+
