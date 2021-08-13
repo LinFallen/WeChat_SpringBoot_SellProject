@@ -9,8 +9,8 @@ import xyz.wablers.service.SellerService;
 /**
  * @author Wablers
  * @version 1.0
- * @description: TODO
- * @date 2021/8/13 16:48
+ * @description: 买家端接口实现
+ * @date 2021/8/13 21:48
  */
 @Service
 public class SellerServiceImpl implements SellerService {

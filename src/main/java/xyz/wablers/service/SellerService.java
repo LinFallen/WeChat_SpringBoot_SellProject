@@ -6,7 +6,7 @@ import xyz.wablers.dataobject.SellerInfo;
  * @author Wablers
  * @version 1.0
  * @description: 卖家端
- * @date 2021/8/13 16:41
+ * @date 2021/8/13 21:41
  */
 public interface SellerService {
 
