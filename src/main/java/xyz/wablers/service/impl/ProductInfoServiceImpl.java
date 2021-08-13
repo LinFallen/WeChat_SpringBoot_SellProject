@@ -1,8 +1,6 @@
 package xyz.wablers.service.impl;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -28,8 +26,6 @@ import java.util.Optional;
  */
 
 @Service
-@Slf4j
-@Transactional(rollbackFor = Exception.class)
 public class ProductInfoServiceImpl implements ProductInfoService {
 
     @Autowired
@@ -100,4 +96,35 @@ public class ProductInfoServiceImpl implements ProductInfoService {
         }
         productInfoRepository.saveAll(changeProducts);
     }
+
+    @Override
+    public ProductInfo onSale(String productId) {
+        ProductInfo productInfo = findOne(productId);
+        if (productInfo == null) {
+            throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
+        }
+        if (productInfo.getProductStatus() == ProductStatusEnum.UP.getCode()) {
+            throw new SellException(ResultEnum.PRODUCT_STATUS_ERROR);
+        }
+
+        //更新
+        productInfo.setProductStatus(ProductStatusEnum.UP.getCode());
+        return productInfoRepository.save(productInfo);
+    }
+
+    @Override
+    public ProductInfo offSale(String productId) {
+        ProductInfo productInfo = findOne(productId);
+        if (productInfo == null) {
+            throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
+        }
+        if (productInfo.getProductStatus() == ProductStatusEnum.DOWN.getCode()) {
+            throw new SellException(ResultEnum.PRODUCT_STATUS_ERROR);
+        }
+
+        //更新
+        productInfo.setProductStatus(ProductStatusEnum.DOWN.getCode());
+        return productInfoRepository.save(productInfo);
+    }
 }
+

@@ -1,14 +1,14 @@
 package xyz.wablers.dto;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import lombok.Data;
 import xyz.wablers.dataobject.OrderDetail;
 import xyz.wablers.enums.OrderStatusEnum;
 import xyz.wablers.enums.PayStatusEnum;
+import xyz.wablers.utils.EnumUtil;
 import xyz.wablers.utils.serializer.Date2LongSerializer;
+import lombok.Data;
 
-import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -48,4 +48,14 @@ public class OrderDTO {
     // 该订单概要对应的订单详情，一对多关系，@JsonInclude当该字段值为null时，生成json不包含该字段
     //@JsonInclude(JsonInclude.Include.NON_EMPTY)
     List<OrderDetail> orderDetailList;
+
+    @JsonIgnore
+    public OrderStatusEnum getOrderStatusEnum() {
+        return EnumUtil.getByCode(orderStatus, OrderStatusEnum.class);
+    }
+
+    @JsonIgnore
+    public PayStatusEnum getPayStatusEnum() {
+        return EnumUtil.getByCode(payStatus, PayStatusEnum.class);
+    }
 }
