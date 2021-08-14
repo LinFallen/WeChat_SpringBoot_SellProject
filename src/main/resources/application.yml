@@ -23,4 +23,11 @@ wechat:
   key-path:
   mch-key:
   notify-url: http://sellwechat.nat100.top/sell/pay/notify
+  template-id:
+    orderStatus: ydnOXKtlqA6gb_--q_CCEDwVpfyUbGNryw3SABnZW6E
+
+project-url:
+  wechat-mp-authorize:  http://sellwechat.nat100.top
+  wechat-open-authorize:  http://sellwechat.nat100.top
+  sell:  http://sellwechat.nat100.top
 

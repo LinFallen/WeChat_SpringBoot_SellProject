@@ -21,8 +21,7 @@ import xyz.wablers.enums.ResultEnum;
 import xyz.wablers.exception.SellException;
 import xyz.wablers.repository.OrderDetailRepository;
 import xyz.wablers.repository.OrderMasterRepository;
-import xyz.wablers.service.OrderService;
-import xyz.wablers.service.ProductInfoService;
+import xyz.wablers.service.*;
 import xyz.wablers.utils.KeyUtil;
 
 import java.math.BigDecimal;
@@ -48,6 +47,13 @@ public class OrderServiceImpl implements OrderService {
     private OrderMasterRepository orderMasterRepository;
     @Autowired
     private OrderDetailRepository orderDetailRepository;
+    @Autowired
+    private PayService payService;
+    @Autowired
+    private PushMessageService pushMessageService;
+    @Autowired
+    private WebSocket webSocket;
+
 
     /**
      * @description: 、计算总价、写入订单数据库（orderMaster和orderDetail）、扣库存
@@ -94,7 +100,7 @@ public class OrderServiceImpl implements OrderService {
         // 扣库存
         productInfoService.decreaseStock(cartDTOS);
         // webSocket发送消息，告知卖家有新订单
-
+        webSocket.sendMessage("有新的订单");
         return orderDTO;
     }
 
@@ -164,22 +170,27 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    @Transactional
     public OrderDTO finish(OrderDTO orderDTO) {
-        // 判断订单状态
+        //判断订单状态
         if (!orderDTO.getOrderStatus().equals(OrderStatusEnum.NEW.getCode())) {
-            log.error("[完结订单]订单状态不正确, orderId={}, orderStatus={}", orderDTO.getOrderId(), orderDTO.getOrderStatus());
+            log.error("【完结订单】订单状态不正确, orderId={}, orderStatus={}", orderDTO.getOrderId(), orderDTO.getOrderStatus());
             throw new SellException(ResultEnum.ORDER_STATUS_ERROR);
         }
 
-        // 修改状态
+        //修改订单状态
         orderDTO.setOrderStatus(OrderStatusEnum.FINISHED.getCode());
         OrderMaster orderMaster = new OrderMaster();
-        BeanUtils.copyProperties(orderDTO,orderMaster);
+        BeanUtils.copyProperties(orderDTO, orderMaster);
         OrderMaster updateResult = orderMasterRepository.save(orderMaster);
         if (updateResult == null) {
-            log.error("[完结订单]更新失败, orderMaster={}", orderMaster);
+            log.error("【完结订单】更新失败, orderMaster={}", orderMaster);
             throw new SellException(ResultEnum.ORDER_UPDATE_FAIL);
         }
+
+        //推送微信模版消息
+        pushMessageService.orderStatus(orderDTO);
+
         return orderDTO;
     }
 

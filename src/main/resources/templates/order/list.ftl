@@ -111,7 +111,7 @@
 <script>
     var websocket = null;
     if('WebSocket' in window) {
-        websocket = new WebSocket('ws://sell.natapp4.cc/sell/webSocket');
+        websocket = new WebSocket('ws://sellwechat.nat100.top/sell/webSocket');
     }else {
         alert('该浏览器不支持websocket!');
     }
@@ -128,7 +128,6 @@
         console.log('收到消息:' + event.data)
         //弹窗提醒, 播放音乐
         $('#myModal').modal('show');
-
         document.getElementById('notice').play();
     }
 
