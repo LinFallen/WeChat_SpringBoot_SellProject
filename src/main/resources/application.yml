@@ -10,7 +10,11 @@ spring:
     default-property-inclusion: non_null
   freemarker:
     suffix: .ftl   #设定ftl文件路径
-
+  mvc:
+    static-path-pattern: /static/**
+  web:
+    resources:
+      static-locations: /static/**
 server:
   port: 8080
   servlet:
