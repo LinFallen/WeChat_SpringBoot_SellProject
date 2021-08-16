@@ -31,7 +31,7 @@ import java.util.Objects;
  * @date 2021/8/12 18:41
  */
 
-@CrossOrigin
+
 @RestController
 @RequestMapping("/buyer/order")
 @Slf4j
