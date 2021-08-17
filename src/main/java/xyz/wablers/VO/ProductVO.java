@@ -3,6 +3,7 @@ package xyz.wablers.VO;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -13,7 +14,9 @@ import java.util.List;
  */
 
 @Data
-public class ProductVO {
+public class ProductVO implements Serializable {
+
+    private static final long serialVersionUID = 3479655511742083760L;
     // 则返回的Json数据为name，而不是categoryName
     @JsonProperty("name")
     private String categoryName;

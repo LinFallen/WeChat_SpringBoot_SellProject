@@ -24,8 +24,7 @@ public class ResultVO<T> implements Serializable {
      * 但每次编译生成的class产生的serialVersionUID不同
      * 这个时候再反序列化时便会出现serialVersionUID不一致，导致反序列化失败。
      */
-    private static final long serialVersionUID = -5871871162621251839L;
-
+    private static final long serialVersionUID = 5690161981675865178L;
     // 错误码，0正确
     private Integer code;
     // 错误信息
