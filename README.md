@@ -30,5 +30,7 @@
 
 - **其他**：相关文档接口、数据库构建、流程文档都在 [doc](https://github.com/LinFallen/WeChat_SpringBoot_SellProject/tree/master/doc) 中
 
+    ​			课程链接：https://pan.baidu.com/s/1wVtGvWyaIfDpUvAPPSmYuw ，提取码：rp70
+
 **最后注意**：因为项目后台系统验证身份时会跳转到外网映射地址，而外网映射工具映射的是本地IP，而非服务器端IP
 &emsp;&emsp;所以，想要成功运行项目，要么就在服务端设置外网映射，要么更改application-prod，全指向服务器地址，而不指向外网映射网址，要么运行本地项目
